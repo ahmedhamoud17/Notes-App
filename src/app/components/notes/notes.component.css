@@ -1,0 +1,29 @@
+@media (min-width:0px) and (max-width:768px){
+    .container .main-button{
+        width: 100%;
+
+    }
+}
+
+@media (min-width:769px) and (max-width:992px){
+    .container .main-button{
+        width: 100%;
+
+    }
+}
+@media (min-width:993px) and (max-width:3000px){
+    .container .main-button{
+        width: 25%;
+        position: absolute;
+        right: 0;
+
+    }
+}
+
+.row .item .card:hover{
+    background-color: #63346F;
+    cursor: pointer;
+    color: white;
+    transform: scale(1.1);
+    transition: all .7s;
+}

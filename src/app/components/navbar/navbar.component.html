@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-transparent">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img width="70" height="50" src="assets\logo1.PNG" alt="">
+        </a>
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+
+                <li class="nav-item ">
+                    <a class="nav-link rounded-5 me-2 px-2 fw-medium" routerLink="home">Home</a>
+                </li>
+                <li *ngIf="isLogin" class="nav-item">
+                    <a class="nav-link rounded-5 me-2 px-2 fw-medium" routerLink="notes">Notes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link rounded-5 me-2 px-2 fw-medium" routerLink="about">About</a>
+                </li>
+
+
+            </ul>
+
+            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+
+                <li *ngIf="!isLogin" class="nav-item">
+                    <a class="nav-link rounded-5 me-2 px-2 fw-medium" routerLink="login">Sign In</a>
+                </li>
+                <li *ngIf="!isLogin" class="nav-item">
+                    <a class="nav-link rounded-5 me-2 px-2 fw-medium" routerLink="register">Sign Up</a>
+                </li>
+                <li *ngIf="isLogin" class="nav-item cursor_pointer">
+                    <a (click)="LogOut()" class="nav-link rounded-5 px-2 fw-medium">Log Out</a>
+                </li>
+
+
+            </ul>
+
+        </div>
+    </div>
+</nav>

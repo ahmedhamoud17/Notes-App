@@ -1,0 +1,59 @@
+<div class="py-5">
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12 ">
+                <div class="d-flex">
+                    <p class="pb-2 mt-1 display-6 main-color">Sign In Now</p>
+                    <img class="mt-2" width="40" height="40" src="assets\logo1.PNG" alt="">
+                </div>
+
+                <p class="alert-box my-3">{{apiError}}</p>
+
+
+                <form [formGroup]="LoginForm" (ngSubmit)="HandleLogin(LoginForm)">
+
+
+                    <label for="email" class="mb-2">Email</label>
+                    <input type="email" class="form-control mb-2" formControlName="email" id="email">
+                    <div *ngIf="LoginForm.get('email')?.errors && LoginForm.get('email')?.touched">
+                        <p *ngIf="LoginForm.get('email')?.getError('required')">Email Is Required</p>
+                        <p *ngIf="LoginForm.get('email')?.getError('email')">Email Is Invalid</p>
+                    </div>
+
+                    <label for="password" class="mb-2">Password</label>
+                    <input type="text" class="form-control mb-2" formControlName="password" id="password">
+                    <div *ngIf="LoginForm.get('password')?.errors && LoginForm.get('password')?.touched">
+                        <p *ngIf="LoginForm.get('password')?.getError('required')">Password Is Required</p>
+                        <p *ngIf="LoginForm.get('password')?.getError('pattern')">Password Must Have Lowwercase Or
+                            Uppercase Character</p>
+                    </div>
+
+
+
+                    <button [disabled]="LoginForm.invalid" type="submit" class="main-button w-100 fw-medium my-3"
+                        role="button">
+
+                        <i *ngIf="isLoading" class="fas fa-spinner fa-spin main-color"></i>
+
+                        <span *ngIf="!isLoading" class="text">
+                            Sign
+                            In</span><span>Click To
+                            Sign
+                            In
+                            ..</span>
+
+                    </button>
+
+                    <p>Not a member ? <a (click)="NavigateToSignUp()" class="cursor_pointer text-decoration-none main-color fw-medium">Sign Up</a>
+                    </p>
+
+                </form>
+
+
+            </div>
+            <div class="col-lg-5 offset-lg-1 col-md-12 col-sm-12 image d-flex flex-column justify-content-center">
+                <img class="w-100" height="500" src="assets\login.svg" alt="">
+            </div>
+        </div>
+    </div>
+</div>

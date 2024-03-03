@@ -1,0 +1,62 @@
+<div class="py-5">
+    <div class="container position-relative">
+        <div class="row">
+            <div class="col-lg-8 col-md-12 col-sm-12">
+                <!-- <div class="input-group flex-nowrap" *ngIf="NotesContainer.length">
+                    <input type="text" [(ngModel)]="value" class="form-control" placeholder="Search .." aria-label="Username" aria-describedby="addon-wrapping">
+                    <span class="input-group-text cursor_pointer" id="addon-wrapping">
+                        <i class="fa-solid fa-magnifying-glass main-color "></i>
+                    </span>
+                  </div>            -->
+
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12  d-flex flex-column justify-content-center">
+                <button (click)="openDialog()" class="main-button" role="button"><span class="text">Add
+                        Note</span><span>Click To Add
+                        Note..</span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="py-5">
+    <div class="container mt-5">
+        <div class="row gy-5">
+            <div *ngFor="let note of NotesContainer.reverse() | filter:value ; index as index " class="col-lg-4 col-md-6 col-sm-12">
+                <div class="item  h-100">
+                    <div class="card border-0 shadow position-relative  h-100">
+
+                        <button class="position-absolute end-0" mat-icon-button [matMenuTriggerFor]="menu"
+                            aria-label="Example icon-button with a menu">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item [swal]="deleteSwal">
+                                <mat-icon class="text-danger">delete</mat-icon>
+                                <span>Delete</span>
+                            </button>
+
+                            <swal #deleteSwal title="Delete {{ note.title }}?" text="This cannot be undone"
+                                icon="question" [showCancelButton]="true" [focusCancel]="true"
+                                (confirm)="deleteNote(note._id , index)">
+                            </swal>
+                            <button mat-menu-item >
+                                <mat-icon class="text-secondary">edit</mat-icon>
+                                <span>Update</span>
+                            </button>
+
+
+                        </mat-menu>
+
+
+
+                        <div class="card-body  h-100" >
+                            <p class="display-6">{{note.title}}</p>
+                            <p class="">{{note.desc}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

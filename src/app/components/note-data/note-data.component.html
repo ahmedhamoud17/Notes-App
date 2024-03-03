@@ -1,0 +1,37 @@
+<section class="py-5">
+
+    
+    <form [formGroup]="NoteForm" (ngSubmit)="AddNote(NoteForm)">
+        <div class="mb-3 px-3 py-2">
+            <label for="title" class="mb-2">Note Title</label>
+            <input type="text" class="form-control" id="title" formControlName="title" placeholder="Example Note Title">
+        </div>
+        <div *ngIf="NoteForm.get('title')?.errors && NoteForm.get('title')?.touched">
+            <p class="container main-color" *ngIf="NoteForm.get('title')?.getError('required')">Note Title Is Required
+            </p>
+        </div>
+
+
+        <div class="mb-3 px-3 py-2">
+            <label for="desc" class="mb-2">Note Description</label>
+            <textarea id="desc" formControlName="desc" type="text" cols="30" rows="5" class="form-control"
+                placeholder="Example Note Description"></textarea>
+        </div>
+        <div *ngIf="NoteForm.get('desc')?.errors && NoteForm.get('desc')?.touched">
+            <p class="container main-color" *ngIf="NoteForm.get('desc')?.getError('required')">Note Description Is
+                Required</p>
+        </div>
+
+        <div class="container text-center">
+            <button [disabled]="NoteForm.invalid" class="main-button" role="button">
+                <i *ngIf="isLoading" class="fas fa-spinner fa-spin main-color"></i>
+                <span *ngIf="!isLoading" class="text">Add
+                    Note</span><span>Click To Add
+                    Note..</span></button>
+        </div>
+
+    </form>
+
+    
+
+</section>

@@ -1,0 +1,79 @@
+<div class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12 ">
+                <div class="d-flex">
+                    <p class="pb-2 mt-1 display-6 main-color">Sign Up Now</p>
+                    <img class="mt-2" width="40" height="40" src="assets\logo1.PNG" alt="">
+                </div>
+
+                <p class="alert-box my-3">{{apiError}}</p>
+
+
+                <form [formGroup]="RegisterForm" (ngSubmit)="HandleRegister(RegisterForm)">
+
+                    <label for="first_name" class="mb-2">First Name</label>
+                    <input type="text" class="form-control mb-2" formControlName="first_name" id="first_name">
+                    <div *ngIf="RegisterForm.get('first_name')?.errors && RegisterForm.get('first_name')?.touched">
+                        <p *ngIf="RegisterForm.get('first_name')?.getError('required')">First Name Is Required</p>
+                        <p *ngIf="RegisterForm.get('first_name')?.getError('maxlength')">First Name Max Length Is 20</p>
+                        <p *ngIf="RegisterForm.get('first_name')?.getError('minlength')">First Name Min Length Is 5</p>
+                    </div>
+
+                    <label for="last_name" class="mb-2">Last Name</label>
+                    <input type="text" class="form-control mb-2" formControlName="last_name" id="last_name">
+                    <div *ngIf="RegisterForm.get('last_name')?.errors && RegisterForm.get('last_name')?.touched">
+                        <p *ngIf="RegisterForm.get('last_name')?.getError('required')">Last Name Is Required</p>
+                        <p *ngIf="RegisterForm.get('last_name')?.getError('maxlength')">Last Name Max Length Is 20</p>
+                        <p *ngIf="RegisterForm.get('last_name')?.getError('minlength')">Last Name Min Length Is 5</p>
+                    </div>
+
+
+                    <label for="email" class="mb-2">Email</label>
+                    <input type="email" class="form-control mb-2" formControlName="email" id="email">
+                    <div *ngIf="RegisterForm.get('email')?.errors && RegisterForm.get('email')?.touched">
+                        <p *ngIf="RegisterForm.get('email')?.getError('required')">Email Is Required</p>
+                        <p *ngIf="RegisterForm.get('email')?.getError('email')">Email Is Invalid</p>
+                    </div>
+
+                    <label for="password" class="mb-2">Password</label>
+                    <input type="text" class="form-control mb-2" formControlName="password" id="password">
+                    <div *ngIf="RegisterForm.get('password')?.errors && RegisterForm.get('password')?.touched">
+                        <p *ngIf="RegisterForm.get('password')?.getError('required')">Password Is Required</p>
+                        <p *ngIf="RegisterForm.get('password')?.getError('pattern')">Password Must Have Lowwercase Or
+                            Uppercase Character</p>
+                    </div>
+
+
+                    <label for="age" class="mb-2">Age</label>
+                    <input type="number" class="form-control mb-2" formControlName="age" id="age">
+                    <div *ngIf="RegisterForm.get('age')?.errors && RegisterForm.get('age')?.touched">
+                        <p *ngIf="RegisterForm.get('age')?.getError('required')">Age Is Required</p>
+                        <p *ngIf="RegisterForm.get('age')?.getError('min')">Age Must Be Over 12</p>
+                    </div>
+
+
+                    <button [disabled]="RegisterForm.invalid" type="submit" class="main-button w-100 fw-medium my-3"
+                        role="button">
+
+                        <i *ngIf="isLoading" class="fas fa-spinner fa-spin main-color"></i>
+
+                        <span *ngIf="!isLoading" class="text">
+                            Sign
+                            Up</span><span>Click To
+                            Sign
+                            Up
+                            ..</span>
+
+                    </button>
+
+                </form>
+
+
+            </div>
+            <div class="col-lg-5 offset-lg-1 col-md-12 col-sm-12 image d-flex flex-column justify-content-center">
+                <img class="w-100" height="500" src="assets\register.svg" alt="">
+            </div>
+        </div>
+    </div>
+</div>
